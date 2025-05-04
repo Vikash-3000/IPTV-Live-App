@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "15434897259",
+    "project_id": "iptv-8a0bf",
+    "storage_bucket": "iptv-8a0bf.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:15434897259:android:13f0a9b1ae8c316fe3de2e",
+        "android_client_info": {
+          "package_name": "com.example.livetvapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD7TTyPtoJVz656Y6TvmwZkuPuJ4HYb1Ps"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
