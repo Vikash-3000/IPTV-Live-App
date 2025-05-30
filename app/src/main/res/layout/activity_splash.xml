@@ -1,0 +1,30 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_background_dark">
+
+    <!-- Lottie Animation replacing static logo -->
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottieLogo"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:layout_centerInParent="true"
+        app:lottie_fileName="play_animaton.json"
+        app:lottie_autoPlay="true"
+        app:lottie_renderMode="hardware" />
+
+    <!-- App Name Text -->
+    <TextView
+        android:id="@+id/appName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/lottieLogo"
+        android:text="@string/app_name"
+        android:textColor="#00FFFF"
+        android:textSize="@dimen/_28sdp"
+        android:fontFamily="@font/poppins_bold"
+        android:visibility="visible" />
+</RelativeLayout>
