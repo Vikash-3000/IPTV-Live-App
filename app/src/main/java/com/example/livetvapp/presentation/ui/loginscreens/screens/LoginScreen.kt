@@ -1,0 +1,75 @@
+package com.example.livetvapp.presentation.ui.loginscreens.screens
+
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Surface
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
+import com.example.livetvapp.R
+import com.example.livetvapp.presentation.ui.loginscreens.components.AppNameTextComponent
+import com.example.livetvapp.presentation.ui.loginscreens.components.BottomComponent
+import com.example.livetvapp.presentation.ui.loginscreens.components.BottomLoginTextComponent
+import com.example.livetvapp.presentation.ui.loginscreens.components.ForgotPasswordTextComponent
+import com.example.livetvapp.presentation.ui.loginscreens.components.HeadingTextComponent
+import com.example.livetvapp.presentation.ui.loginscreens.components.ImageComponent
+import com.example.livetvapp.presentation.ui.loginscreens.components.MyTextField
+import com.example.livetvapp.presentation.ui.loginscreens.components.PasswordInputComponent
+import com.example.livetvapp.ui.theme.AppBackground
+
+@Composable
+fun LoginScreen(navController: NavHostController) {
+    Surface(
+        modifier = Modifier.fillMaxSize().padding(20.dp),
+        color = AppBackground
+    ) {
+        Column() {
+            Spacer(modifier = Modifier.height(10.dp))
+            ImageComponent(image = R.drawable.app_logo)
+            AppNameTextComponent(heading = "StreamX")
+            Spacer(modifier = Modifier.height(20.dp))
+            HeadingTextComponent(heading = "Login")
+            Spacer(modifier = Modifier.height(20.dp))
+            Column {
+                MyTextField(labelVal = "email ID", R.drawable.at_symbol)
+                Spacer(modifier = Modifier.height(15.dp))
+                PasswordInputComponent(labelVal = "Password")
+                Spacer(modifier = Modifier.height(15.dp))
+                Row(
+                    horizontalArrangement = Arrangement.End,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    ForgotPasswordTextComponent(navController)
+                }
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize(),
+                    contentAlignment = Alignment.BottomCenter // ⬅️ Center horizontally at bottom
+                ) {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally // ⬅️ Center Column contents horizontally
+                    ) {
+                        BottomComponent(navController)
+                        Spacer(modifier = Modifier.height(12.dp))
+                        BottomLoginTextComponent(
+                            initialText = "New to StreamX? ",
+                            action = "Sign Up!",
+                            navController = navController
+                        )
+                        Spacer(modifier = Modifier.height(18.dp))
+                    }
+                }
+
+            }
+        }
+    }
+}
