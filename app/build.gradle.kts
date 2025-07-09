@@ -56,10 +56,13 @@ dependencies {
     implementation(libs.ui.tooling.preview)
     implementation(libs.androidx.compose.material3.material32)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.firebase.auth)
+    implementation(libs.androidx.credentials)
+    implementation(libs.androidx.credentials.play.services.auth)
+    implementation(libs.googleid)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit.v115)
     androidTestImplementation(libs.androidx.espresso.core.v351)
-    androidTestImplementation(platform(libs.androidx.compose.bom.v20250600))
     androidTestImplementation(libs.ui.test.junit4)
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
@@ -72,7 +75,7 @@ dependencies {
     implementation(libs.coil.gif)
 
     //Firebase Remote Config
-    implementation("com.google.firebase:firebase-config-ktx:22.1.1")
+    implementation(libs.firebase.config.ktx)
 
     // Paging 3 + Compose integration
     implementation(libs.androidx.paging.runtime)
@@ -82,6 +85,7 @@ dependencies {
     implementation(libs.androidx.room.runtime)
     implementation(libs.androidx.room.ktx)
     implementation(libs.androidx.room.paging)
+    //noinspection KaptUsageInsteadOfKsp
     kapt(libs.androidx.room.compiler)
 
     // Retrofit (API)

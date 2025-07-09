@@ -1,64 +1,50 @@
 [versions]
 accompanistPager = "0.34.0"
 accompanistPagerIndicators = "0.34.0"
-activityComposeVersion = "1.8.1"
-agp = "8.9.2"
-androidxComposeBom = "2025.06.00"
-androidxJunit = "1.1.5"
+activityComposeVersion = "1.10.1"
+agp = "8.10.1"
+androidxJunit = "1.2.1"
 coilCompose = "2.4.0"
 composeBomVersion = "2023.03.00"
 composeShimmer = "1.0.5"
 converterGson = "2.9.0"
-coreKtxVersion = "1.12.0"
-espressoCoreVersion = "3.5.1"
-firebaseAuth = "23.2.0"
-firebaseAuthKtx = "23.2.0"
-firebaseDatabase = "21.0.0"
+coreKtxVersion = "1.16.0"
+espressoCoreVersion = "3.6.1"
+firebaseAuth = "23.2.1"
+firebaseAuthKtx = "23.2.1"
+firebaseConfigKtx = "22.1.2"
 firebaseFunctionsKtx = "21.2.1"
-firebaseMlVision = "24.1.0"
-firebaseMlVisionTextRecognition = "24.0.3"
-googleServices = "4.4.2"
-hiltAndroid = "2.48"
+googleServices = "4.4.3"
+hiltAndroid = "2.49"
 hiltAndroidGradlePlugin = "2.48"
 hiltCompiler = "2.48"
 hiltNavigationCompose = "1.2.0"
 kotlin = "2.0.21"
-coreKtx = "1.16.0"
 junit = "4.13.2"
-junitVersion = "1.2.1"
-espressoCore = "3.6.1"
 kotlinxCoroutinesAndroid = "1.7.3"
 kotlinxCoroutinesCore = "1.7.3"
-lifecycleRuntimeKtx = "2.8.7"
-activityCompose = "1.10.1"
-composeBom = "2024.09.00"
-lifecycleRuntimeKtxVersion = "2.6.2"
+lifecycleRuntimeKtxVersion = "2.9.1"
 lottie = "6.3.0"
-material3 = "1.3.2"
 materialIconsExtended = "1.7.8"
-media3Exoplayer = "1.6.1"
-navigationCompose = "2.9.0"
+media3Exoplayer = "1.7.1"
+navigationCompose = "2.9.1"
 pagingRuntime = "3.3.6"
 retrofit = "2.9.0"
-roomRuntime = "2.7.1"
+roomRuntime = "2.7.2"
 sdpAndroid = "1.1.1"
 securityCrypto = "1.0.0"
-speechRecognition = "1.0.0-alpha03"
-appcompat = "1.7.0"
-material = "1.12.0"
-activity = "1.10.1"
-constraintlayout = "2.2.1"
-uiTextGoogleFonts = "1.8.2"
+appcompat = "1.7.1"
+uiTextGoogleFonts = "1.8.3"
+credentials = "1.5.0"
+credentialsPlayServicesAuth = "1.5.0"
+googleid = "1.1.1"
 
 [libraries]
 accompanist-pager-indicators = { module = "com.google.accompanist:accompanist-pager-indicators", version.ref = "accompanistPagerIndicators" }
 accompanist-pager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanistPager" }
 androidx-activity-compose-v181 = { module = "androidx.activity:activity-compose", version.ref = "activityComposeVersion" }
 androidx-compose-bom-v20230300 = { module = "androidx.compose:compose-bom", version.ref = "composeBomVersion" }
-androidx-compose-bom-v20250600 = { module = "androidx.compose:compose-bom", version.ref = "androidxComposeBom" }
-androidx-compose-material3-material3 = { module = "androidx.compose.material3:material3" }
 androidx-compose-material3-material32 = { module = "androidx.compose.material3:material3" }
-androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 androidx-core-ktx-v1120 = { module = "androidx.core:core-ktx", version.ref = "coreKtxVersion" }
 androidx-espresso-core-v351 = { module = "androidx.test.espresso:espresso-core", version.ref = "espressoCoreVersion" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
@@ -81,48 +67,30 @@ coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose"
 coil-gif = { module = "io.coil-kt:coil-gif", version.ref = "coilCompose" }
 compose-shimmer = { module = "com.valentinilk.shimmer:compose-shimmer", version.ref = "composeShimmer" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converterGson" }
-firebase-analytics-ktx = { module = "com.google.firebase:firebase-analytics-ktx" }
 firebase-auth = { module = "com.google.firebase:firebase-auth", version.ref = "firebaseAuth" }
 firebase-auth-ktx = { module = "com.google.firebase:firebase-auth-ktx", version.ref = "firebaseAuthKtx" }
-firebase-config-ktx = { module = "com.google.firebase:firebase-config-ktx" }
-firebase-database = { module = "com.google.firebase:firebase-database", version.ref = "firebaseDatabase" }
+firebase-config-ktx = { module = "com.google.firebase:firebase-config-ktx", version.ref = "firebaseConfigKtx" }
 firebase-functions-ktx = { module = "com.google.firebase:firebase-functions-ktx", version.ref = "firebaseFunctionsKtx" }
-firebase-ml-vision = { module = "com.google.firebase:firebase-ml-vision", version.ref = "firebaseMlVision" }
-firebase-ml-vision-text-recognition = { module = "com.google.firebase:firebase-ml-vision-text-recognition", version.ref = "firebaseMlVisionTextRecognition" }
 google-services = { module = "com.google.gms:google-services", version.ref = "googleServices" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltAndroid" }
 hilt-android-gradle-plugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "hiltAndroidGradlePlugin" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltCompiler" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
-androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
-androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
-androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycleRuntimeKtx" }
-androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
-androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
-androidx-ui = { group = "androidx.compose.ui", name = "ui" }
-androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
-androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
-androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
-androidx-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
-androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
-androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
-material3 = { module = "androidx.compose.material3:material3", version.ref = "material3" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 sdp-android = { module = "com.intuit.sdp:sdp-android", version.ref = "sdpAndroid" }
-speech-recognition = { module = "com.google.mlkit:speech-recognition", version.ref = "speechRecognition" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
-androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
-androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 ui = { module = "androidx.compose.ui:ui" }
 ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
 ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+androidx-credentials = { group = "androidx.credentials", name = "credentials", version.ref = "credentials" }
+androidx-credentials-play-services-auth = { group = "androidx.credentials", name = "credentials-play-services-auth", version.ref = "credentialsPlayServicesAuth" }
+googleid = { group = "com.google.android.libraries.identity.googleid", name = "googleid", version.ref = "googleid" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
