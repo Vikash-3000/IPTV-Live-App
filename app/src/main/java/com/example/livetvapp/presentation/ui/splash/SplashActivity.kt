@@ -19,55 +19,69 @@ import com.example.livetvapp.utils.SystemBarUtils
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivitySplashBinding
+
+    // Define constants for magic numbers
+    companion object {
+        private const val LOTTIE_ANIMATION_SCALE_UP_FACTOR = 30f
+        private const val LOTTIE_ANIMATION_SCALE_DURATION = 1700L
+        private const val APP_NAME_FADE_OUT_DURATION = 300L
+        private const val ACTIVITY_TRANSITION_DELAY = 1250L
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //System navbar and status bar color change
-        SystemBarUtils.applySystemBarStyle(this);
+        // System navbar and status bar color change
+        SystemBarUtils.applySystemBarStyle(this)
 
         animateLottieLogo(binding.lottieLogo, binding.appName)
     }
 
-    private fun animateLottieLogo(lottieView: LottieAnimationView, textView: TextView) {
-        lottieView.addAnimatorListener(object : AnimatorListenerAdapter() {
-            override fun onAnimationEnd(animation: Animator) {
-                // 1. Prepare scale-up animation
-                val scaleUpX = PropertyValuesHolder.ofFloat(View.SCALE_X, 1f, 30f)
-                val scaleUpY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 1f, 30f)
+    private fun animateLottieLogo(
+        lottieView: LottieAnimationView,
+        textView: TextView,
+    ) {
+        lottieView.addAnimatorListener(
+            object : AnimatorListenerAdapter() {
+                override fun onAnimationEnd(animation: Animator) {
+                    // 1. Prepare scale-up animation
+                    val scaleUpX = PropertyValuesHolder.ofFloat(View.SCALE_X, 1f, LOTTIE_ANIMATION_SCALE_UP_FACTOR)
+                    val scaleUpY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 1f, LOTTIE_ANIMATION_SCALE_UP_FACTOR)
 
-                val scaleAnim = ObjectAnimator.ofPropertyValuesHolder(lottieView, scaleUpX, scaleUpY).apply {
-                    duration = 1700 // Faster for snappier feel
-                    interpolator = AccelerateInterpolator()
-                }
+                    val scaleAnim =
+                        ObjectAnimator.ofPropertyValuesHolder(lottieView, scaleUpX, scaleUpY).apply {
+                            duration = LOTTIE_ANIMATION_SCALE_DURATION // Faster for snappier feel
+                            interpolator = AccelerateInterpolator()
+                        }
 
-                // 2. Fade out app name
-                val fadeOutText = ObjectAnimator.ofFloat(textView, View.ALPHA, 1f, 0f).apply {
-                    duration = 300
-                    interpolator = AccelerateInterpolator()
-                }
+                    // 2. Fade out app name
+                    val fadeOutText =
+                        ObjectAnimator.ofFloat(textView, View.ALPHA, 1f, 0f).apply {
+                            duration = APP_NAME_FADE_OUT_DURATION
+                            interpolator = AccelerateInterpolator()
+                        }
 
-                // 3. Start both animations together
-                AnimatorSet().apply {
-                    playTogether(scaleAnim, fadeOutText)
-                    start()
-                }
-
-                // 4. Launch MainActivity *during* animation (not after)
-                lottieView.postDelayed({
-                    val intent = Intent(this@SplashActivity, LoginActivity::class.java).apply {
-                        addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION or Intent.FLAG_ACTIVITY_NEW_TASK)
+                    // 3. Start both animations together
+                    AnimatorSet().apply {
+                        playTogether(scaleAnim, fadeOutText)
+                        start()
                     }
-                    startActivity(intent)
-                    overridePendingTransition(0, 0)
-                    finish()
-                }, 1250) // Start transition mid-animation
-            }
-        })
+
+                    // 4. Launch MainActivity *during* animation (not after)
+                    lottieView.postDelayed({
+                        val intent =
+                            Intent(this@SplashActivity, LoginActivity::class.java).apply {
+                                addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION or Intent.FLAG_ACTIVITY_NEW_TASK)
+                            }
+                        startActivity(intent)
+                        finish()
+                    }, ACTIVITY_TRANSITION_DELAY) // Start transition mid-animation
+                }
+            },
+        )
 
         lottieView.playAnimation()
     }

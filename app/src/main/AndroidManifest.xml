@@ -14,15 +14,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MyApp.Splash"
         tools:targetApi="31">
+
         <activity
             android:name=".presentation.ui.loginscreens.LoginActivity"
             android:exported="false"
             android:label="@string/title_activity_login"
             android:theme="@style/Theme.MyApp.Splash" />
+
         <activity
             android:name=".presentation.ui.main.MainActivity"
             android:exported="false"
             android:theme="@style/Theme.MyApp.NoSplash" />
+
         <activity
             android:name=".presentation.ui.splash.SplashActivity"
             android:exported="true"
