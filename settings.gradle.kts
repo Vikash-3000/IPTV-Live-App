@@ -1,5 +1,14 @@
 @file:Suppress("UnstableApiUsage")
 
+include(":commons")
+
+
+include(":core")
+
+
+include(":features")
+
+
 pluginManagement {
     repositories {
         google {
@@ -23,3 +32,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Live Tv App"
 include(":app")
+include(":features")
+include(":core")
+include(":commons")

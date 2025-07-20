@@ -23,8 +23,8 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.livetvapp.R
-import com.example.livetvapp.ui.theme.LiveTvAppTheme
-import com.example.livetvapp.utils.SystemBarUtils
+import com.example.livetvapp.commons.utils.SystemBarUtils
+import theme.LiveTvAppTheme
 
 class MainActivity : ComponentActivity() {
 
@@ -37,59 +37,59 @@ class MainActivity : ComponentActivity() {
         // System navbar and status bar color change
         SystemBarUtils.applySystemBarStyle(this)
 
-        setContent {
-            LiveTvAppTheme {
-                TopBar()
-            }
-        }
+//        setContent {
+//            LiveTvAppTheme {
+//                TopBar()
+//            }
+//        }
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun TopBar() {
-    TopAppBar(
-        modifier = Modifier.fillMaxWidth()
-            .padding(8.dp,0.dp,8.dp,0.dp),
-        title = {
-            Row {
-                Text(
-                    text = "StreamX",
-                    style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.W900,
-                        fontFamily = FontFamily(Font(R.font.poppins_bold))),
-                    color = colorResource(id = R.color.primary)
-                )
-            }
-        },
-        colors = TopAppBarDefaults.smallTopAppBarColors(
-            containerColor = colorResource(id = R.color.primary_background_dark) // Set background color
-        ),
-        navigationIcon = {
-            Icon(
-                painter = painterResource(id = R.drawable.app_logo),
-                contentDescription = "App Icon",
-                tint = colorResource(id = R.color.primary),
-                modifier = Modifier.size(44.dp) // Set your desired size here
-            )
-        },
-        actions = {
-            IconButton(onClick = { /* Handle favourites click */ }) {
-                Icon(
-                    imageVector = Icons.Filled.FavoriteBorder,
-                    contentDescription = "Favourites",
-                    tint = colorResource(id = R.color.white),
-                    modifier = Modifier.size(26.dp) // Set your desired size here
-                )
-            }
-            IconButton(onClick = { /* Handle search click */ }) {
-                Icon(
-                    imageVector = Icons.Filled.Search,
-                    contentDescription = "Search",
-                    tint = colorResource(id = R.color.white),
-                    modifier = Modifier.size(26.dp) // Set your desired size here
-                )
-            }
-        },
-        scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
-    )
-}
+//@OptIn(ExperimentalMaterial3Api::class)
+//@Composable
+//fun TopBar() {
+//    TopAppBar(
+//        modifier = Modifier.fillMaxWidth()
+//            .padding(8.dp,0.dp,8.dp,0.dp),
+//        title = {
+//            Row {
+//                Text(
+//                    text = "StreamX",
+//                    style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.W900,
+//                        fontFamily = FontFamily(Font(R.font.poppins_bold))),
+//                    color = colorResource(id = R.color.primary)
+//                )
+//            }
+//        },
+//        colors = TopAppBarDefaults.smallTopAppBarColors(
+//            containerColor = colorResource(id = R.color.primary_background_dark) // Set background color
+//        ),
+//        navigationIcon = {
+//            Icon(
+//                painter = painterResource(id = R.drawable.app_logo),
+//                contentDescription = "App Icon",
+//                tint = colorResource(id = R.color.primary),
+//                modifier = Modifier.size(44.dp) // Set your desired size here
+//            )
+//        },
+//        actions = {
+//            IconButton(onClick = { /* Handle favourites click */ }) {
+//                Icon(
+//                    imageVector = Icons.Filled.FavoriteBorder,
+//                    contentDescription = "Favourites",
+//                    tint = colorResource(id = R.color.white),
+//                    modifier = Modifier.size(26.dp) // Set your desired size here
+//                )
+//            }
+//            IconButton(onClick = { /* Handle search click */ }) {
+//                Icon(
+//                    imageVector = Icons.Filled.Search,
+//                    contentDescription = "Search",
+//                    tint = colorResource(id = R.color.white),
+//                    modifier = Modifier.size(26.dp) // Set your desired size here
+//                )
+//            }
+//        },
+//        scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
+//    )
+//}

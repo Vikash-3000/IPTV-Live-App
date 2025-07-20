@@ -1,7 +1,6 @@
 [versions]
 accompanistPager = "0.36.0"
 accompanistPagerIndicators = "0.36.0"
-activityComposeVersion = "1.10.1"
 agp = "8.11.1"
 androidxJunit = "1.2.1"
 coilCompose = "2.7.0"
@@ -15,19 +14,20 @@ firebaseAuthKtx = "23.2.1"
 firebaseConfigKtx = "22.1.2"
 firebaseFunctionsKtx = "21.2.1"
 googleServices = "4.4.3"
-hiltAndroid = "2.56.2"
-hiltAndroidGradlePlugin = "2.56.2"
-hiltCompiler = "2.56.2"
+hiltAndroid = "2.57"
+hiltAndroidGradlePlugin = "2.57"
+hiltCompiler = "2.57"
 hiltNavigationCompose = "1.2.0"
 kotlin = "2.2.0"
 junit = "4.13.2"
 kotlinxCoroutinesAndroid = "1.10.2"
 kotlinxCoroutinesCore = "1.10.2"
-lifecycleRuntimeKtxVersion = "2.9.1"
+ktlintGradle = "9.4.0"
+lifecycleRuntimeKtxVersion = "2.9.2"
 lottie = "6.6.7"
 materialIconsExtended = "1.7.8"
 media3Exoplayer = "1.7.1"
-navigationCompose = "2.9.1"
+navigationCompose = "2.9.2"
 pagingRuntime = "3.3.6"
 retrofit = "3.0.0"
 roomRuntime = "2.7.2"
@@ -38,11 +38,11 @@ uiTextGoogleFonts = "1.8.3"
 credentials = "1.5.0"
 credentialsPlayServicesAuth = "1.5.0"
 googleid = "1.1.1"
+material = "1.12.0"
 
 [libraries]
 accompanist-pager-indicators = { module = "com.google.accompanist:accompanist-pager-indicators", version.ref = "accompanistPagerIndicators" }
 accompanist-pager = { module = "com.google.accompanist:accompanist-pager", version.ref = "accompanistPager" }
-androidx-activity-compose-v181 = { module = "androidx.activity:activity-compose", version.ref = "activityComposeVersion" }
 androidx-compose-bom-v20230300 = { module = "androidx.compose:compose-bom", version.ref = "composeBomVersion" }
 androidx-compose-material3-material32 = { module = "androidx.compose.material3:material3" }
 androidx-core-ktx-v1120 = { module = "androidx.core:core-ktx", version.ref = "coreKtxVersion" }
@@ -78,12 +78,11 @@ hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hil
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutinesAndroid" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutinesCore" }
+ktlint-gradle = { module = "org.jlleitschuh.gradle:ktlint-gradle", version.ref = "ktlintGradle" }
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
 sdp-android = { module = "com.intuit.sdp:sdp-android", version.ref = "sdpAndroid" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
-ui = { module = "androidx.compose.ui:ui" }
-ui-graphics = { module = "androidx.compose.ui:ui-graphics" }
 ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4" }
 ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
@@ -91,9 +90,11 @@ ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 androidx-credentials = { group = "androidx.credentials", name = "credentials", version.ref = "credentials" }
 androidx-credentials-play-services-auth = { group = "androidx.credentials", name = "credentials-play-services-auth", version.ref = "credentialsPlayServicesAuth" }
 googleid = { group = "com.google.android.libraries.identity.googleid", name = "googleid", version.ref = "googleid" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+android-library = { id = "com.android.library", version.ref = "agp" }
 

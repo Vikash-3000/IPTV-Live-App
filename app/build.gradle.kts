@@ -1,7 +1,9 @@
+import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.kotlin.compose)
+    id("org.jlleitschuh.gradle.ktlint") // Version should be inherited from parent
     id("com.google.gms.google-services") // ✅ Apply here
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
@@ -41,12 +43,26 @@ android {
         compose = true
         viewBinding = true
     }
+
 }
+
+ktlint {
+    android = true // to use the Android Studio KtLint plugin style
+    ignoreFailures = false
+    reporters {
+        reporter(ReporterType.PLAIN)
+        reporter(ReporterType.CHECKSTYLE)
+    }
+}
+
 
 dependencies {
 
-    // Material
-    implementation(libs.androidx.material.icons.extended)
+    // Project Modules
+    implementation(project(":commons"))      // themes, colors, fonts, utils
+    implementation(project(":core"))         // domain/data layer if using clean arch
+    implementation(project(":features"))      // features
+
 
     // Coil
     implementation(libs.coil.compose)
@@ -97,21 +113,12 @@ dependencies {
     implementation(libs.firebase.functions.ktx)
     implementation(libs.androidx.security.crypto)
 
-    implementation(libs.lottie) // Use the latest version
 
-    implementation(libs.sdp.android) // sdp for scalable new side
-
-    implementation(libs.androidx.ui.text.google.fonts)
     implementation(libs.androidx.core.ktx.v1120)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.lifecycle.runtime.ktx.v262)
-    implementation(libs.androidx.activity.compose.v181)
-    implementation(platform(libs.androidx.compose.bom.v20230300))
-    implementation(libs.ui)
-    implementation(libs.ui.graphics)
-    implementation(libs.ui.tooling.preview)
-    implementation(libs.androidx.compose.material3.material32)
-    implementation(libs.androidx.navigation.compose)
+
+
     implementation(libs.firebase.auth)
     implementation(libs.androidx.credentials)
     implementation(libs.androidx.credentials.play.services.auth)
