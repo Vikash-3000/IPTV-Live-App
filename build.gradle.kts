@@ -10,10 +10,5 @@ buildscript {
     dependencies {
         classpath(libs.google.services) // for Firebase
         classpath(libs.hilt.android.gradle.plugin)
-        classpath(libs.ktlint.gradle)
-    }
-
-    repositories {
-        mavenCentral()
     }
 }

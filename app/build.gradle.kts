@@ -1,9 +1,7 @@
-import org.jlleitschuh.gradle.ktlint.reporter.ReporterType
-
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("org.jlleitschuh.gradle.ktlint") // Version should be inherited from parent
+    alias(libs.plugins.kotlin.compose)
     id("com.google.gms.google-services") // ✅ Apply here
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
@@ -45,16 +43,6 @@ android {
     }
 
 }
-
-ktlint {
-    android = true // to use the Android Studio KtLint plugin style
-    ignoreFailures = false
-    reporters {
-        reporter(ReporterType.PLAIN)
-        reporter(ReporterType.CHECKSTYLE)
-    }
-}
-
 
 dependencies {
 
