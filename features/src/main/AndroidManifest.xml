@@ -12,10 +12,5 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name="com.example.auth.presentation.ui.LoginActivity"
-            android:exported="false"
-            android:theme="@style/Theme.MyApp.Splash" />
     </application>
 </manifest>

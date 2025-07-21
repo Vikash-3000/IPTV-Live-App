@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose) // 👈 Add this line
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -55,6 +57,10 @@ dependencies {
     implementation(libs.androidx.material.icons.extended) // Material Icon
 
     implementation(libs.ui.tooling.preview) //Preview Jetpack Compose
+
+    // Hilt (DI)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 
     implementation(libs.androidx.core.ktx.v1120) // core ktx
     implementation(libs.androidx.appcompat) // appcompat

@@ -13,11 +13,13 @@ import android.view.animation.AccelerateInterpolator
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.airbnb.lottie.LottieAnimationView
-import com.example.auth.presentation.ui.LoginActivity
+import com.example.core.navigation.ActivityRoutes
 import com.example.livetvapp.commons.utils.SystemBarUtils
 import com.example.livetvapp.features.databinding.ActivitySplashBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 @SuppressLint("CustomSplashScreen")
+@AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashBinding
 
@@ -83,9 +85,10 @@ class SplashActivity : AppCompatActivity() {
                     // 4. Launch MainActivity *during* animation (not after)
                     lottieView.postDelayed({
                         val intent =
-                            Intent(this@SplashActivity, LoginActivity::class.java).apply {
-                                addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION or Intent.FLAG_ACTIVITY_NEW_TASK)
-                            }
+                            Intent().setClassName(this@SplashActivity, ActivityRoutes.MAIN_ACTIVITY)
+                                .apply {
+                                    addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION or Intent.FLAG_ACTIVITY_NEW_TASK)
+                                }
                         startActivity(intent)
                         finish()
                     }, ACTIVITY_TRANSITION_DELAY) // Start transition mid-animation
