@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -33,6 +35,19 @@ android {
 }
 
 dependencies {
+    // ✅ BoM first — always required once
+    implementation(platform(libs.firebase.bom))
+
+    // ✅ Firebase products without version
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.firebase.common.ktx)
+    implementation(libs.firebase.functions.ktx)
+    implementation(libs.play.services.auth)
+
+    // Hilt (DI)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+
     implementation(libs.androidx.core.ktx.v1120) // core ktx
     implementation(libs.androidx.appcompat) // appcompat
     implementation(libs.material) // material design

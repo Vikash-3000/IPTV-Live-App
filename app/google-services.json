@@ -12,7 +12,20 @@
           "package_name": "com.example.livetvapp"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "15434897259-caqad4iop175m17hsu46ou7dlt60omq1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.livetvapp",
+            "certificate_hash": "67b2ce8f1ce33fb7a596b1a1d06c1a2c61e7af66"
+          }
+        },
+        {
+          "client_id": "15434897259-d5vmnmtco0l6fsb6p65vv2kj5s1367u6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyD7TTyPtoJVz656Y6TvmwZkuPuJ4HYb1Ps"
@@ -20,7 +33,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "15434897259-d5vmnmtco0l6fsb6p65vv2kj5s1367u6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

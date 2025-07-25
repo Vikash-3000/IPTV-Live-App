@@ -96,9 +96,7 @@ dependencies {
     // HLS for Streaming of m3u8 files
     implementation(libs.androidx.media3.exoplayer.hls)
 
-    // firebase auth
-    implementation(libs.firebase.auth.ktx)
-    implementation(libs.firebase.functions.ktx)
+
     implementation(libs.androidx.security.crypto)
 
 
@@ -106,8 +104,6 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.lifecycle.runtime.ktx.v262)
 
-
-    implementation(libs.firebase.auth)
     implementation(libs.androidx.credentials)
     implementation(libs.androidx.credentials.play.services.auth)
     implementation(libs.googleid)

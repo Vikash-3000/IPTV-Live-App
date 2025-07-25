@@ -61,6 +61,11 @@ dependencies {
     // Hilt (DI)
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+    implementation(libs.androidx.hilt.navigation.compose)
+
+    //Google play services
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.play.services.auth)
 
     implementation(libs.androidx.core.ktx.v1120) // core ktx
     implementation(libs.androidx.appcompat) // appcompat
