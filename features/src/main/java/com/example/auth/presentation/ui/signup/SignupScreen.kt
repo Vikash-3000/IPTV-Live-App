@@ -18,6 +18,7 @@ import com.example.auth.presentation.components.HeadingTextComponent
 import com.example.auth.presentation.components.ImageComponent
 import com.example.auth.presentation.components.MyButton
 import com.example.auth.presentation.components.MyTextField
+import com.example.auth.presentation.components.PasswordInputComponent
 import com.example.auth.presentation.components.SignupTermsAndPrivacyText
 import com.example.livetvapp.features.R
 import theme.AppBackground
@@ -37,11 +38,13 @@ fun SignupScreen(navController: NavHostController) {
             HeadingTextComponent(heading = "Sign Up")
             Spacer(modifier = Modifier.Companion.height(20.dp))
             Column {
-                MyTextField(labelVal = "email ID", icon = R.drawable.at_symbol)
-                Spacer(modifier = Modifier.Companion.height(15.dp))
                 MyTextField(labelVal = "full name", icon = R.drawable.lockperson)
                 Spacer(modifier = Modifier.Companion.height(15.dp))
+                MyTextField(labelVal = "email ID", icon = R.drawable.at_symbol)
+                Spacer(modifier = Modifier.Companion.height(15.dp))
                 MyTextField(labelVal = "mobile", icon = R.drawable.lockphone)
+                Spacer(modifier = Modifier.Companion.height(15.dp))
+                PasswordInputComponent(labelVal = "Password")
             }
             Spacer(modifier = Modifier.Companion.height(20.dp))
             SignupTermsAndPrivacyText()

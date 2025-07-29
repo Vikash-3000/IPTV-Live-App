@@ -173,6 +173,8 @@ fun PasswordInputComponent(labelVal: String) {
             focusedBorderColor = BorderColor,
             unfocusedBorderColor = BorderColor,
             textColor = Color.White,
+            focusedLeadingIconColor = BrandColor,
+            unfocusedLeadingIconColor = Tertirary,
             cursorColor = Color.White
         ),
         shape = MaterialTheme.shapes.small,
@@ -182,8 +184,7 @@ fun PasswordInputComponent(labelVal: String) {
         leadingIcon = {
             Icon(
                 painter = painterResource(id = R.drawable.lock),
-                contentDescription = "at_symbol",
-                tint = Tertirary
+                contentDescription = "at_symbol"
             )
         },
         trailingIcon = {
