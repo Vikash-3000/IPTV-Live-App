@@ -1,4 +1,4 @@
-package com.example.auth.presentation.ui.login
+package com.example.auth.presentation.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -22,7 +22,6 @@ import com.example.auth.presentation.components.ForgotPasswordTextComponent
 import com.example.auth.presentation.components.HeadingTextComponent
 import com.example.auth.presentation.components.ImageComponent
 import com.example.auth.presentation.components.MyTextField
-import com.example.auth.presentation.components.PasswordInputComponent
 import com.example.livetvapp.features.R
 import theme.AppBackground
 
@@ -41,9 +40,16 @@ fun LoginScreen(navController: NavHostController) {
             HeadingTextComponent(heading = "Login")
             Spacer(modifier = Modifier.Companion.height(20.dp))
             Column {
-                MyTextField(labelVal = "email ID", R.drawable.at_symbol)
+                MyTextField(
+                    labelVal = "email ID",
+                    R.drawable.at_symbol,
+                    value = "",
+                    onValueChange = {},
+                    isError = false,
+                    supportingText = {}
+                )
                 Spacer(modifier = Modifier.Companion.height(15.dp))
-                PasswordInputComponent(labelVal = "Password")
+//                PasswordInputComponent(labelVal = "Password")
                 Spacer(modifier = Modifier.Companion.height(15.dp))
                 Row(
                     horizontalArrangement = Arrangement.End,

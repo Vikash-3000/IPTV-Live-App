@@ -3,10 +3,10 @@ package com.example.auth.presentation.navigation
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
-import com.example.auth.presentation.ui.forgetpassword.ForgotPasswordScreen
-import com.example.auth.presentation.ui.login.LoginScreen
-import com.example.auth.presentation.ui.resetpassword.ResetPasswordScreen
-import com.example.auth.presentation.ui.signup.SignupScreen
+import com.example.auth.presentation.ui.ForgotPasswordScreen
+import com.example.auth.presentation.ui.LoginScreen
+import com.example.auth.presentation.ui.ResetPasswordScreen
+import com.example.auth.presentation.ui.SignupScreen
 import com.example.core.navigation.Screen
 
 fun NavGraphBuilder.authGraph(navController: NavHostController) {

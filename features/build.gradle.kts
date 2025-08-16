@@ -37,6 +37,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = "11"
+        freeCompilerArgs = listOf("-XXLanguage:+PropertyParamAnnotationDefaultTargetMode")
     }
 }
 
@@ -64,6 +65,7 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
 
     //Google play services
+    implementation(libs.firebase.firestore.ktx.v24111)
     implementation(libs.firebase.auth.ktx)
     implementation(libs.play.services.auth)
 

@@ -1,4 +1,4 @@
-package com.example.auth.presentation.ui.resetpassword
+package com.example.auth.presentation.ui
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -14,34 +14,41 @@ import com.example.auth.presentation.components.AppNameTextComponent
 import com.example.auth.presentation.components.ForgotPasswordHeadingTextComponent
 import com.example.auth.presentation.components.ImageComponent
 import com.example.auth.presentation.components.MyButton
-import com.example.auth.presentation.components.PasswordInputComponent
+import com.example.auth.presentation.components.MyTextField
 import com.example.auth.presentation.components.TextInfoComponent
-import com.example.livetvapp.commons.R
+import com.example.livetvapp.features.R
 import theme.AppBackground
 
 @Composable
-fun ResetPasswordScreen(navController: NavHostController) {
+fun ForgotPasswordScreen(navController: NavHostController) {
     Surface(
-        color = AppBackground, modifier = Modifier.Companion
+        modifier = Modifier.Companion
             .fillMaxSize()
-            .padding(20.dp)
+            .padding(20.dp),
+        color = AppBackground
     ) {
         Column {
             Spacer(modifier = Modifier.Companion.height(10.dp))
-            ImageComponent(image = R.drawable.app_logo)
+            ImageComponent(image = com.example.livetvapp.commons.R.drawable.app_logo)
             AppNameTextComponent(heading = "StreamX")
             Spacer(modifier = Modifier.Companion.height(20.dp))
-            ForgotPasswordHeadingTextComponent(action = "Reset")
+            ForgotPasswordHeadingTextComponent(action = "Forgot")
             TextInfoComponent(
-                textVal = "Don't worry, strange things happen. Please enter the email address associated with your account."
+                textVal = "Forgot your password? Enter the email linked to your StreamX account to reset it."
             )
             Spacer(modifier = Modifier.Companion.height(20.dp))
-            Column {
-                PasswordInputComponent(labelVal = "Password")
-                Spacer(modifier = Modifier.Companion.height(15.dp))
-                PasswordInputComponent(labelVal = "Confirm new password")
-            }
-            MyButton(labelVal = "Submit", navController = navController)
+            MyTextField(
+                labelVal = "email ID",
+                icon = R.drawable.at_symbol,
+                value = "",
+                onValueChange = {},
+                isError = false,
+                supportingText = {}
+            )
+            MyButton(
+                labelVal = "Submit",
+                onClick = {},
+                navController)
         }
     }
 }

@@ -114,10 +114,13 @@ fun ForgotPasswordHeadingTextComponent(action: String) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyTextField(labelVal: String, icon: Int) {
-    var textVal by remember {
-        mutableStateOf("")
-    }
+fun MyTextField(
+    labelVal: String, icon: Int,
+    value: String,
+    onValueChange: (String) -> Unit,
+    isError: Boolean = false,
+    supportingText: @Composable (() -> Unit)? = null
+    ) {
     val typeOfKeyboard: KeyboardType = when (labelVal) {
         "email ID" -> KeyboardType.Email
         "mobile" -> KeyboardType.Phone
@@ -125,14 +128,12 @@ fun MyTextField(labelVal: String, icon: Int) {
     }
 
     OutlinedTextField(
-        value = textVal,
-        onValueChange = {
-            textVal = it
-        },
+        value = value,
+        onValueChange = { newValue -> onValueChange(newValue) }, // IMPORTANT: send value up
         modifier = Modifier.Companion.fillMaxWidth(),
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = BorderColor,
-            unfocusedBorderColor = BorderColor,
+            focusedBorderColor = if (isError) MaterialTheme.colorScheme.error else BorderColor,
+            unfocusedBorderColor = if (isError) MaterialTheme.colorScheme.error else BorderColor,
             textColor = Color.White,
             focusedLeadingIconColor = BrandColor,
             unfocusedLeadingIconColor = Tertirary,
@@ -150,28 +151,31 @@ fun MyTextField(labelVal: String, icon: Int) {
         keyboardOptions = KeyboardOptions(
             keyboardType = typeOfKeyboard, imeAction = ImeAction.Done
         ),
-        singleLine = true
+        singleLine = true,
+        isError = isError,
+        supportingText = supportingText
     )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PasswordInputComponent(labelVal: String) {
-    var password by remember {
-        mutableStateOf("")
-    }
+fun PasswordInputComponent(
+    labelVal: String,
+    value: String,
+    onValueChange: (String) -> Unit = {},
+    isError: Boolean = false,
+    supportingText: @Composable (() -> Unit)? = null
+) {
     var isShowPassword by remember {
         mutableStateOf(false)
     }
     OutlinedTextField(
-        value = password,
-        onValueChange = {
-            password = it
-        },
+        value = value,
+        onValueChange = { newValue -> onValueChange(newValue) }, // send changes up
         modifier = Modifier.Companion.fillMaxWidth(),
         colors = TextFieldDefaults.outlinedTextFieldColors(
-            focusedBorderColor = BorderColor,
-            unfocusedBorderColor = BorderColor,
+            focusedBorderColor = if (isError) MaterialTheme.colorScheme.error else BorderColor,
+            unfocusedBorderColor = if (isError) MaterialTheme.colorScheme.error else BorderColor,
             textColor = Color.White,
             focusedLeadingIconColor = BrandColor,
             unfocusedLeadingIconColor = Tertirary,
@@ -201,8 +205,11 @@ fun PasswordInputComponent(labelVal: String) {
                 )
             }
         },
+        isError = isError,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-        visualTransformation = if (isShowPassword) VisualTransformation.None else PasswordVisualTransformation()
+        visualTransformation = if (isShowPassword) VisualTransformation.None else PasswordVisualTransformation(),
+        supportingText = supportingText,
+        singleLine = true
     )
 }
 
@@ -219,9 +226,13 @@ fun ForgotPasswordTextComponent(navController: NavHostController) {
 }
 
 @Composable
-fun MyButton(labelVal: String, navController: NavHostController) {
+fun MyButton(
+    labelVal: String,
+    onClick: () -> Unit = {},
+    navController: NavHostController) {
     Button(
-        onClick = { /*TODO*/ }, colors = ButtonDefaults.buttonColors(
+        onClick = onClick,
+        colors = ButtonDefaults.buttonColors(
             containerColor = BrandColor
         ), modifier = Modifier.Companion
             .fillMaxWidth()
@@ -242,7 +253,9 @@ fun MyButton(labelVal: String, navController: NavHostController) {
 @Composable
 fun BottomComponent(navController: NavHostController) {
     Column {
-        MyButton(labelVal = "Continue", navController = navController)
+        MyButton(labelVal = "Continue",
+            onClick = { /*TODO*/ },
+            navController = navController)
         Spacer(modifier = Modifier.Companion.height(10.dp))
         Row(
             verticalAlignment = Alignment.CenterVertically,

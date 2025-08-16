@@ -22,6 +22,7 @@ android {
     }
 
     buildTypes {
+
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -55,9 +56,6 @@ dependencies {
     // Coil
     implementation(libs.coil.compose)
     implementation(libs.coil.gif)
-
-    // Firebase Remote Config
-    implementation(libs.firebase.config.ktx)
 
     // Paging 3 + Compose integration
     implementation(libs.androidx.paging.runtime)
@@ -99,6 +97,8 @@ dependencies {
 
     implementation(libs.androidx.security.crypto)
 
+// Or use Play Integrity for better security
+    implementation(libs.firebase.appcheck.playintegrity) // for production
 
     implementation(libs.androidx.core.ktx.v1120)
     implementation(libs.androidx.appcompat)

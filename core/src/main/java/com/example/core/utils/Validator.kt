@@ -1,19 +1,30 @@
 package com.example.core.utils
 
+import android.util.Patterns
+
 object Validator {
 
-    fun isValidPassword(password: String, email: String): Boolean {
-        val passwordRegex = Regex("^(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*[!@#\$%^&*()_+=\\-{}\\[\\]:\";'<>?,./]).{8,}$")
-        return passwordRegex.matches(password) && !password.contains(email.split("@").first(), ignoreCase = true)
-    }
+    fun validateName(name: String): String? =
+        if (name.isBlank()) "Full name is required" else null
+
+    fun validateEmail(email: String): String? =
+        if (email.isEmpty()) "Email is required"
+        else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) "Invalid email" else null
+
+    fun validatePhone(phone: String): String? =
+        if (phone.isBlank()) "Phone number is required"
+        else if (phone.length != 10 || !phone.all { it.isDigit() }) "Phone number must be 10 digits" else null
 
     fun passwordValidationError(password: String, email: String): String? {
-        if (password.length < 8) return "Password must be at least 8 characters"
-        if (!password.any { it.isUpperCase() }) return "Password must contain at least one uppercase letter"
-        if (!password.any { it.isLowerCase() }) return "Password must contain at least one lowercase letter"
-        if (!password.any { it.isDigit() }) return "Password must contain at least one digit"
-        if (!password.any { "!@#\$%^&*()_+=-{}[]|:;\"'<>,.?/".contains(it) }) return "Password must have one special character"
-        if (password.contains(email.split("@").first(), ignoreCase = true)) return "Password must not contain your email"
-        return null // Valid
+        if (password.isBlank()) return "Password is required"
+        if (password.length < 8) return "At least 8 characters required"
+        if (!password.any { it.isUpperCase() }) return "One uppercase letter required"
+        if (!password.any { it.isLowerCase() }) return "One lowercase letter required"
+        if (!password.any { it.isDigit() }) return "One digit required"
+        if (!password.any { "!@#\$%^&*()_+=-{}[]|:;\"'<>,.?/".contains(it) }) return "One special character required"
+        if (email.isNotBlank() && password.contains(email.split("@").first(), ignoreCase = true))
+            return "Password must not contain your email"
+        return null
     }
 }
+

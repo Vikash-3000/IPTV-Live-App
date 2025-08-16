@@ -36,13 +36,15 @@ android {
 
 dependencies {
     // ✅ BoM first — always required once
-    implementation(platform(libs.firebase.bom))
+    implementation (platform(libs.firebase.bom.v3312))
 
     // ✅ Firebase products without version
     implementation(libs.firebase.auth.ktx)
     implementation(libs.firebase.common.ktx)
     implementation(libs.firebase.functions.ktx)
+    implementation(libs.firebase.firestore.ktx.v24111)
     implementation(libs.play.services.auth)
+    implementation(libs.play.services.location)
 
     // Hilt (DI)
     implementation(libs.hilt.android)
