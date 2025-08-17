@@ -1,5 +1,9 @@
 package com.example.auth.presentation.ui
 
+import android.Manifest
+import android.content.pm.PackageManager
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -15,11 +19,16 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.auth.presentation.components.AppNameTextComponent
@@ -50,10 +59,7 @@ fun SignupScreen(
     val snackbarHostState = remember { SnackbarHostState() }
     val scope = rememberCoroutineScope()
 
-    // fetch location once
-    LaunchedEffect(Unit) {
-        viewModel.fetchLocationAndAddress()
-    }
+    LocationGetAddress()
 
     // react to global error or success
     LaunchedEffect(state.error) {
@@ -175,6 +181,53 @@ fun SignupScreen(
                 }
 
             }
+        }
+    }
+}
+
+@Composable
+fun LocationGetAddress(viewModel: SignupViewModel = hiltViewModel()) {
+    val ctx = LocalContext.current
+
+    var hasFine by remember {
+        mutableStateOf(
+            ContextCompat.checkSelfPermission(
+                ctx, Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        )
+    }
+    var hasCoarse by remember {
+        mutableStateOf(
+            ContextCompat.checkSelfPermission(
+                ctx, Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        )
+    }
+
+    val requestPermission = rememberLauncherForActivityResult(
+        ActivityResultContracts.RequestMultiplePermissions()
+    ) { results ->
+        hasFine = results[Manifest.permission.ACCESS_FINE_LOCATION] == true
+        hasCoarse = results[Manifest.permission.ACCESS_COARSE_LOCATION] == true
+        if (hasFine || hasCoarse) {
+            viewModel.fetchLocationAndAddress()   // ✅ now we can fetch
+        } else {
+            // Optional: set a fallback so you don't save empty string
+            viewModel.setAddressFallback("Permission not granted")
+        }
+    }
+
+    // Ask once when screen opens
+    LaunchedEffect(Unit) {
+        if (hasFine || hasCoarse) {
+            viewModel.fetchLocationAndAddress()
+        } else {
+            requestPermission.launch(
+                arrayOf(
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+                )
+            )
         }
     }
 }

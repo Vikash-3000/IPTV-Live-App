@@ -1,6 +1,5 @@
 package com.example.auth.presentation.viewmodel
 
-import android.content.Context
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -11,34 +10,39 @@ import com.example.auth.presentation.state.SignupUiState
 import com.example.core.domain.auth.usecase.SignupUseCase
 import com.example.core.utils.Validator
 import com.example.core.utils.location.LocationService
-import com.example.core.utils.location.getAddressFromLocation
 import com.example.core.utils.state.AuthResultState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
 class SignupViewModel @Inject constructor(
     private val signupUseCase: SignupUseCase,
-    private val locationService: LocationService,
-    @ApplicationContext private val context: Context
+    private val locationService: LocationService
 ) : ViewModel() {
 
     var state by mutableStateOf(SignupUiState())
         private set
 
     fun fetchLocationAndAddress() {
-        viewModelScope.launch {
+        viewModelScope.launch(Dispatchers.IO) {
             val location = locationService.getCurrentLocation()
             location?.let {
-                val address = getAddressFromLocation(context, it.latitude, it.longitude)
+                val address = locationService.getAddressFromLocation(it.latitude, it.longitude)
 
-                state = state.copy(
-                    address = address
-                )
+                withContext(Dispatchers.Main) {
+                    state = state.copy(
+                        address = address
+                    )
+                }
             }
         }
+    }
+
+    fun setAddressFallback(value: String) {
+        state = state.copy(address = value)
     }
 
     fun onEvent(event: SignupEvent) {

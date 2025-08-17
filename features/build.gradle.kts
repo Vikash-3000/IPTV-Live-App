@@ -49,6 +49,8 @@ dependencies {
 
     implementation(libs.androidx.compose.material3.material32) // Material 3 for textfields and outlined textfield
 
+    implementation(libs.play.services.location)
+
     implementation(libs.lottie) // lottie animation
 
     implementation(libs.sdp.android) // sdp for scalable new side
