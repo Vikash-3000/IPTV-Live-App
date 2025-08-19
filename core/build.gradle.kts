@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
@@ -26,12 +28,17 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
-    kotlinOptions {
-        jvmTarget = "11"
-        freeCompilerArgs = listOf("-XXLanguage:+PropertyParamAnnotationDefaultTargetMode")
+
+    kotlin {
+        explicitApi() // enables -Xexplicit-api=strict
+        // OR: explicitApi = ExplicitApiMode.Strict
+        compilerOptions {
+            jvmTarget.set(JvmTarget.JVM_21)
+            freeCompilerArgs.add("-XXLanguage:+PropertyParamAnnotationDefaultTargetMode")
+        }
     }
 }
 
@@ -50,6 +57,9 @@ dependencies {
     // Hilt (DI)
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+
+    //Datastore (key-value storage) instead of sharedPref
+    implementation(libs.androidx.datastore.preferences)
 
     implementation(libs.androidx.core.ktx.v1120) // core ktx
     implementation(libs.androidx.appcompat) // appcompat
