@@ -46,10 +46,13 @@ android {
             freeCompilerArgs.add("-XXLanguage:+PropertyParamAnnotationDefaultTargetMode")
         }
     }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "2.2.10" // match your Compose version
+    }
 }
 
 dependencies {
-
     // Project Modules
     implementation(project(":commons"))      // themes, colors, fonts, utils
     implementation(project(":core"))         // domain/data layer if using clean arch

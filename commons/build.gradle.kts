@@ -39,6 +39,10 @@ android {
             freeCompilerArgs.add("-XXLanguage:+PropertyParamAnnotationDefaultTargetMode")
         }
     }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "2.2.10" // match your Compose version
+    }
 }
 
 dependencies {
