@@ -33,8 +33,6 @@ android {
     }
 
     kotlin {
-        explicitApi() // enables -Xexplicit-api=strict
-        // OR: explicitApi = ExplicitApiMode.Strict
         compilerOptions {
             jvmTarget.set(JvmTarget.JVM_21)
             freeCompilerArgs.add("-XXLanguage:+PropertyParamAnnotationDefaultTargetMode")
